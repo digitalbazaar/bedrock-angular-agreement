@@ -1,0 +1,10 @@
+{
+  "name": "bedrock-angular-agreement",
+  "version": "0.0.1-dev",
+  "main": "./agreement.js",
+  "moduleType": ["amd"],
+  "ignore": [],
+  "dependencies": {
+    "bedrock-angular": "^2.0.0"
+   }
+}

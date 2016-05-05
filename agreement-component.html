@@ -1,0 +1,26 @@
+<legend>{{$ctrl.agreementHeader}}</legend>
+<div class="form-group">
+  <div class="col-md-offset-3 col-md-7">
+    <div class="checkbox" ng-repeat="agreement in $ctrl.displayOrder">
+      <label>
+        <input type="checkbox" ng-model="$ctrl.agreements[agreement].agreed" ng-change="$ctrl.onAgree()">
+        I agree to the
+        <a href="#" ng-click="$ctrl.selectedAgreement = $ctrl.agreements[agreement]; $ctrl.showSelectedAgreement=true">
+          {{$ctrl.agreements[agreement].title}}
+        </a>
+      </label>
+    </div>
+  </div>
+</div>
+
+<stackable-modal stackable="$ctrl.showSelectedAgreement">
+  <br-modal br-title="{{$ctrl.selectedAgreement.title}}">
+    <br-modal-body>
+      <div ng-include="$ctrl.selectedAgreement.templateUrl"></div>
+    </br-modal-body>
+    <br-modal-footer>
+      <button type="button"
+        class="btn btn-default stackable-cancel">Close</button>
+    </br-modal-footer>
+  </br-modal>
+</stackable-modal>
