@@ -1,0 +1,19 @@
+<stackable-modal stackable="$ctrl.visible.agreementModal">
+  <br-modal br-title="{{$ctrl.agreementHeader}}">
+    <br-modal-body>
+      <p>You must confirm that you accept the following agreements in order to continue.</p>
+      <br-agreement
+        ng-model="$ctrl.agreed"
+        br-agreement-group="{{$ctrl.group}}"
+        br-show-header="false">
+      </br-agreement>
+      <br><br>
+    </br-modal-body>
+    <br-modal-footer>
+      <button ng-disabled="!$ctrl.agreed" type="button" class="btn btn-primary"
+        ng-click="$ctrl.confirm()">
+        Confirm
+      </button>
+    </br-modal-footer>
+  </br-modal>
+</stackable-modal>

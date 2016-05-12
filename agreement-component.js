@@ -10,7 +10,8 @@ function register(module) {
     controller: Ctrl,
     bindings: {
       agreed: '=ngModel',
-      group: '@brAgreementGroup'
+      group: '@brAgreementGroup',
+      showHeader: '<?brShowHeader'
     },
     templateUrl:
       requirejs.toUrl('bedrock-angular-agreement/agreement-component.html')
@@ -21,9 +22,10 @@ function register(module) {
 function Ctrl(brAgreementService) {
   var self = this;
   self.agreementHeader = brAgreementService.groups[self.group].header;
-  self.agreements = brAgreementService.groups[self.group];
+  self.agreements = brAgreementService.groups[self.group].agreements;
   self.displayOrder = brAgreementService.groups[self.group].displayOrder;
   self.selectedAgreement = null;
+  self.showHeader = self.showHeader || true;
 
   self.$onInit = function() {
     self.agreed = false;
