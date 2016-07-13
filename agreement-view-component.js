@@ -18,7 +18,7 @@ function register(module) {
 }
 
 /* @ngInject */
-function Ctrl($location, $scope, brAgreementService, brAlertService) {
+function Ctrl($scope, brAgreementService, brAlertService) {
   var self = this;
   self.visible = {
     agreementModal: true
