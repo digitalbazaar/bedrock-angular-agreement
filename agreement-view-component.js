@@ -10,7 +10,8 @@ function register(module) {
     controller: Ctrl,
     bindings: {
       group: '@brAgreementGroup',
-      onAgree: '&brOnAgree'
+      onAgree: '&brOnAgree',
+      onCancel: '&brOnCancel'
     },
     templateUrl:
       requirejs.toUrl('bedrock-angular-agreement/agreement-view-component.html')
@@ -38,6 +39,12 @@ function Ctrl($scope, brAgreementService, brAlertService) {
       .then(function() {
         $scope.$apply();
       });
+  };
+
+  self.modalClosed = function(err) {
+    if(err === 'canceled') {
+      self.onCancel();
+    }
   };
 }
 

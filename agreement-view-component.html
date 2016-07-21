@@ -1,4 +1,5 @@
-<stackable-modal stackable="$ctrl.visible.agreementModal">
+<stackable-modal stackable="$ctrl.visible.agreementModal"
+  stackable-closed="$ctrl.modalClosed(err, result)">
   <br-modal br-title="{{$ctrl.agreementHeader}}">
     <br-modal-body>
       <p>You must confirm that you accept the following agreements in order to continue.</p>
