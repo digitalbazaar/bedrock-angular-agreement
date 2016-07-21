@@ -1,5 +1,10 @@
 # bedrock-angular-agreement ChangeLog
 
+## 1.2.0 - 2016-07-21
+
+### Added
+- Add br-on-cancel attribute.
+
 ## 1.1.2 - 2016-07-14
 
 ### Changed
