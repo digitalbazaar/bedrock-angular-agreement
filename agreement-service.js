@@ -23,7 +23,14 @@ function factory($http, config) {
     });
     // TODO: make url configurable
     var url = config.data.baseUri + '/agreements/accepted';
-    return Promise.resolve($http.post(url, {agreement: agreementUrls}));
+    return Promise.resolve($http.post(url, {agreement: agreementUrls}))
+      .then(function(response) {
+        if(response.status !== 201) {
+          throw new Error('There was a problem recording the acceptance of ' +
+          'the agreement. Please try again later or contact support.');
+        }
+        return response.data;
+      });
   };
 
   service.register = function(group, agreement, options) {
