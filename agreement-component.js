@@ -28,7 +28,7 @@ function Ctrl(brAgreementService) {
   self.showHeader = self.showHeader || true;
 
   self.$onInit = function() {
-    self.agreed = false;
+    self.agreed = allAgreed();
   };
 
   self.onAgree = function() {
