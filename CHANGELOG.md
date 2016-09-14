@@ -1,5 +1,8 @@
 # bedrock-angular-agreement ChangeLog
 
+### Fixed
+- UI when no agreements exist.
+
 ## 1.2.0 - 2016-07-21
 
 ### Added
