@@ -25,7 +25,6 @@ function Ctrl($scope, brAgreementService, brAlertService) {
     agreementModal: true
   };
   self.agreementHeader = brAgreementService.groups[self.group].header;
-  self.agreements = brAgreementService.groups[self.group].agreements;
   self.agreed = false;
 
   self.confirm = function() {
