@@ -1,5 +1,10 @@
 # bedrock-angular-agreement ChangeLog
 
+## 1.2.2 - 2016-11-01
+
+### Fixed
+- Copy agreements to prevent state from being kept.
+
 ## 1.2.1 - 2016-09-29
 
 ### Fixed
