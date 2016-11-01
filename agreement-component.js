@@ -1,7 +1,7 @@
 /*!
  * Copyright (c) 2016 Digital Bazaar, Inc. All rights reserved.
  */
-define([], function() {
+define(['angular'], function(angular) {
 
 'use strict';
 
@@ -22,7 +22,8 @@ function register(module) {
 function Ctrl(brAgreementService) {
   var self = this;
   self.agreementHeader = brAgreementService.groups[self.group].header;
-  self.agreements = brAgreementService.groups[self.group].agreements;
+  self.agreements = angular.copy(
+    brAgreementService.groups[self.group].agreements);
   self.displayOrder = brAgreementService.groups[self.group].displayOrder;
   self.selectedAgreement = null;
   self.showHeader = self.showHeader || true;
