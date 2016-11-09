@@ -1,5 +1,10 @@
 # bedrock-angular-agreement ChangeLog
 
+## 1.2.3 - 2016-11-09
+
+### Changed
+- Add Protractor test framework and tests.
+
 ## 1.2.2 - 2016-11-01
 
 ### Fixed
@@ -13,7 +18,7 @@
 ## 1.2.0 - 2016-07-21
 
 ### Added
-- Add br-on-cancel attribute.
+- Add `br-on-cancel` attribute.
 
 ## 1.1.2 - 2016-07-14
 
