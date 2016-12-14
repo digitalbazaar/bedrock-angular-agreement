@@ -1,5 +1,10 @@
 # bedrock-angular-agreement ChangeLog
 
+## 1.2.4 - 2016-12-14
+
+### Fixed
+- Fix `showHeader` initialization.
+
 ## 1.2.3 - 2016-11-09
 
 ### Changed
