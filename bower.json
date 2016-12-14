@@ -1,6 +1,5 @@
 {
   "name": "bedrock-angular-agreement",
-  "version": "1.2.4-0",
   "main": "./agreement.js",
   "moduleType": [
     "amd"
