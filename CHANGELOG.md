@@ -1,5 +1,10 @@
 # bedrock-angular-agreement ChangeLog
 
+## 1.2.5 - 2016-12-14
+
+### Changed
+- Remove obsolete version property from bower.json.
+
 ## 1.2.4 - 2016-12-14
 
 ### Fixed
