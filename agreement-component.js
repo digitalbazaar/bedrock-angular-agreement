@@ -26,7 +26,7 @@ function Ctrl(brAgreementService) {
     brAgreementService.groups[self.group].agreements);
   self.displayOrder = brAgreementService.groups[self.group].displayOrder;
   self.selectedAgreement = null;
-  self.showHeader = self.showHeader || true;
+  self.showHeader = self.showHeader === false ? false : true;
 
   self.$onInit = function() {
     self.agreed = allAgreed();
