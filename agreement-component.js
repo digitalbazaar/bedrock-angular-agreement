@@ -1,6 +1,7 @@
 /*!
- * Copyright (c) 2016 Digital Bazaar, Inc. All rights reserved.
+ * Copyright (c) 2016-2017 Digital Bazaar, Inc. All rights reserved.
  */
+/* global requirejs */
 define(['angular'], function(angular) {
 
 'use strict';
@@ -21,14 +22,14 @@ function register(module) {
 /* @ngInject */
 function Ctrl(brAgreementService) {
   var self = this;
-  self.agreementHeader = brAgreementService.groups[self.group].header;
-  self.agreements = angular.copy(
-    brAgreementService.groups[self.group].agreements);
-  self.displayOrder = brAgreementService.groups[self.group].displayOrder;
-  self.selectedAgreement = null;
-  self.showHeader = self.showHeader === false ? false : true;
 
   self.$onInit = function() {
+    self.agreementHeader = brAgreementService.groups[self.group].header;
+    self.agreements = angular.copy(
+      brAgreementService.groups[self.group].agreements);
+    self.displayOrder = brAgreementService.groups[self.group].displayOrder;
+    self.selectedAgreement = null;
+    self.showHeader = self.showHeader === false ? false : true;
     self.agreed = allAgreed();
   };
 
