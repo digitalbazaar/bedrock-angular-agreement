@@ -1,5 +1,10 @@
 # bedrock-angular-agreement ChangeLog
 
+## 1.2.6 - 2017-05-08
+
+### Fixed
+- Initialize component via `$onInit`.
+
 ## 1.2.5 - 2016-12-14
 
 ### Changed
