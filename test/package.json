@@ -10,6 +10,7 @@
     "bedrock-agreement": "^1.0.0",
     "bedrock-agreement-http": "^1.0.0",
     "bedrock-authn-password": "^3.0.3",
+    "bedrock-did-client": "^1.0.0",
     "bedrock-docs": "^2.0.2",
     "bedrock-event-log": "^2.1.1",
     "bedrock-express": "^2.0.6",
