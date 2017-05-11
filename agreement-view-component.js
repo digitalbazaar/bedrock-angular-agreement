@@ -1,5 +1,5 @@
 /*!
- * Copyright (c) 2016 Digital Bazaar, Inc. All rights reserved.
+ * Copyright (c) 2016-2017 Digital Bazaar, Inc. All rights reserved.
  */
 define([], function() {
 
@@ -21,11 +21,14 @@ function register(module) {
 /* @ngInject */
 function Ctrl($scope, brAgreementService, brAlertService) {
   var self = this;
-  self.visible = {
-    agreementModal: true
+
+  self.$onInit = function() {
+    self.visible = {
+      agreementModal: true
+    };
+    self.agreementHeader = brAgreementService.groups[self.group].header;
+    self.agreed = false;
   };
-  self.agreementHeader = brAgreementService.groups[self.group].header;
-  self.agreed = false;
 
   self.confirm = function() {
     brAgreementService.accept(brAgreementService.getAgreements(self.group))
