@@ -20,7 +20,7 @@ describe('bedrock-angular-agreement', () => {
       app.createIdentity(testIdentity);
       app.login(testIdentity);
     });
-    it('displays agreements that need to be accepted', ()=> {
+    it('displays agreements that need to be accepted', () => {
       element(by.buttonText('Route A')).click();
       bedrock.waitForUrl('/agreementa');
       browser.wait(EC.visibilityOf(agreement.component()), 3000);
@@ -81,7 +81,7 @@ describe('bedrock-angular-agreement', () => {
       agreement.confirmButton().click();
       $('h3').getText().should.eventually.equal('Route B');
     }); // end presents two agreements
-    it('execute cancel hander if modal is canceled', ()=> {
+    it('execute cancel hander if modal is canceled', () => {
       element(by.buttonText('Route A')).click();
       bedrock.waitForUrl('/agreementa');
       browser.wait(EC.visibilityOf(agreement.component()), 3000);
