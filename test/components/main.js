@@ -30,7 +30,6 @@ module.config(function($routeProvider, routeResolverProvider) {
   };
   /* @ngInject */
   function resolve($location, $route, brAgreementService) {
-    console.log('PPPPPPPPP', $route);
     var session = $route.current.locals.session;
 
     var requiredAgreements = [];
