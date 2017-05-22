@@ -1,23 +1,17 @@
 /*!
  * Copyright (c) 2016-2017 Digital Bazaar, Inc. All rights reserved.
  */
-/* global requirejs */
-define(['angular'], function(angular) {
+import angular from 'angular';
 
-'use strict';
-
-function register(module) {
-  module.component('brAgreement', {
-    controller: Ctrl,
-    bindings: {
-      agreed: '=ngModel',
-      group: '@brAgreementGroup',
-      showHeader: '<?brShowHeader'
-    },
-    templateUrl:
-      requirejs.toUrl('bedrock-angular-agreement/agreement-component.html')
-  });
-}
+export default {
+  controller: Ctrl,
+  bindings: {
+    agreed: '=ngModel',
+    group: '@brAgreementGroup',
+    showHeader: '<?brShowHeader'
+  },
+  templateUrl: 'bedrock-angular-agreement/agreement-component.html'
+};
 
 /* @ngInject */
 function Ctrl(brAgreementService) {
@@ -48,7 +42,3 @@ function Ctrl(brAgreementService) {
     return agreed;
   }
 }
-
-return register;
-
-});

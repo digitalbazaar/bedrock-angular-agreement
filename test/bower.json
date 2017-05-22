@@ -12,16 +12,16 @@
     "package.json"
   ],
   "dependencies": {
-    "bedrock-angular": "^2.0.0",
+    "bedrock-angular": "digitalbazaar/bedrock-angular#systemjs",
     "chai": "^3.5.0",
     "chai-as-promised": "^5.3.0",
     "mocha": "^3.0.0",
-    "bedrock-angular-alert": "^2.1.0",
-    "bedrock-angular-authn": "^2.1.0",
-    "bedrock-angular-form": "^2.9.2",
-    "bedrock-angular-authn-password": "^1.0.3",
-    "bedrock-angular-resolver": "^2.2.3",
+    "bedrock-angular-alert": "digitalbazaar/bedrock-angular-alert#es6",
+    "bedrock-angular-authn": "digitalbazaar/bedrock-angular-authn#es6",
+    "bedrock-angular-form": "digitalbazaar/bedrock-angular-form#es6",
+    "bedrock-angular-authn-password": "digitalbazaar/bedrock-angular-authn-password#es6",
+    "bedrock-angular-resolver": "digitalbazaar/bedrock-angular-resolver#es6",
     "lodash": "^4.16.4",
-    "bedrock-angular-session": "^3.0.2"
+    "bedrock-angular-session": "digitalbazaar/bedrock-angular-session#es6"
   }
 }

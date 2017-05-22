@@ -28,7 +28,7 @@
     "bedrock-session-http": "^3.0.2",
     "bedrock-test": "^1.1.1",
     "bedrock-validation": "^2.2.1",
-    "bedrock-views": "^4.0.0",
+    "bedrock-views": "digitalbazaar/bedrock-views#systemjs",
     "lodash": "^4.16.4",
     "uuid": "^2.0.3"
   }

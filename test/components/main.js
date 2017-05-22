@@ -1,13 +1,9 @@
 /*!
- * Copyright (c) 2016 Digital Bazaar, Inc. All rights reserved.
+ * Copyright (c) 2016-2017 Digital Bazaar, Inc. All rights reserved.
  */
-define([
-  'angular',
-  'lodash',
-  './test-harness-component'
-], function(angular, _) {
-
-'use strict';
+import angular from 'angular';
+import _ from 'lodash';
+import TestHarnessComponent from './test-harness-component.js';
 
 var module = angular.module('bedrock.agreement-test', [
   'bedrock.agreement', 'bedrock.authn', 'bedrock.authn-password',
@@ -15,9 +11,7 @@ var module = angular.module('bedrock.agreement-test', [
 ]);
 
 // skipping first 2 arguments
-Array.prototype.slice.call(arguments, 2).forEach(function(register) {
-  register(module);
-});
+module.component('brTestHarnessComponent', TestHarnessComponent);
 
 /* @ngInject */
 module.config(function($routeProvider, routeResolverProvider) {
@@ -41,7 +35,7 @@ module.config(function($routeProvider, routeResolverProvider) {
     if(session && session.identity) {
       // see if identity has signed required agreements
       var hasRequiredAgreements = _.difference(
-          requiredAgreements, session.identity.agreements).length === 0;
+        requiredAgreements, session.identity.agreements).length === 0;
       if(!hasRequiredAgreements) {
         if($location.url() === agreementUrl) {
           // already on agreement page, nothing to do
@@ -78,10 +72,9 @@ module.config(function($routeProvider, routeResolverProvider) {
     })
     .when('/agreementa', {
       title: 'Agreements A',
-      template:
-       '<br-agreement-view br-agreement-group="bedrock.routea" ' +
-       'br-on-agree="$resolve.relocate()" br-on-cancel="$resolve.cancel()">' +
-       '</br-agreement-view>',
+      template: '<br-agreement-view br-agreement-group="bedrock.routea" ' +
+        'br-on-agree="$resolve.relocate()" br-on-cancel="$resolve.cancel()">' +
+        '</br-agreement-view>',
       resolve: {
         cancel: function($location, $route, brSessionService) {
           return function() {
@@ -105,10 +98,9 @@ module.config(function($routeProvider, routeResolverProvider) {
     })
     .when('/agreementb', {
       title: 'Agreements B',
-      template:
-       '<br-agreement-view br-agreement-group="bedrock.routeb" ' +
-       'br-on-agree="$resolve.relocate()" br-on-cancel="$resolve.cancel()">' +
-       '</br-agreement-view>',
+      template: '<br-agreement-view br-agreement-group="bedrock.routeb" ' +
+        'br-on-agree="$resolve.relocate()" br-on-cancel="$resolve.cancel()">' +
+        '</br-agreement-view>',
       resolve: {
         cancel: function($location, $route, brSessionService) {
           return function() {
@@ -139,8 +131,7 @@ module.run(function(brAgreementService) {
   brAgreementService.register(
     'bedrock.routea', 'testTos', {
       title: 'Terms of Service',
-      templateUrl: requirejs.toUrl(
-        'bedrock-angular-agreement-test/agreements/tos-a.html')
+      templateUrl: 'bedrock-angular-agreement-test/agreements/tos-a.html'
     });
   brAgreementService.registerGroup('bedrock.routeb');
   brAgreementService.groups['bedrock.routeb'].displayOrder = [
@@ -149,15 +140,11 @@ module.run(function(brAgreementService) {
   brAgreementService.register(
     'bedrock.routeb', 'testTos-b-1', {
       title: 'Terms of Service B-1',
-      templateUrl: requirejs.toUrl(
-        'bedrock-angular-agreement-test/agreements/tos-b-1.html')
+      templateUrl: 'bedrock-angular-agreement-test/agreements/tos-b-1.html'
     });
   brAgreementService.register(
     'bedrock.routeb', 'testTos-b-2', {
       title: 'Terms of Service B-2',
-      templateUrl: requirejs.toUrl(
-        'bedrock-angular-agreement-test/agreements/tos-b-2.html')
+      templateUrl: 'bedrock-angular-agreement-test/agreements/tos-b-2.html'
     });
-});
-
 });

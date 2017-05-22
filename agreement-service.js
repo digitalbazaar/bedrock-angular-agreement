@@ -1,16 +1,8 @@
 /*!
- * Copyright (c) 2016 Digital Bazaar, Inc. All rights reserved.
+ * Copyright (c) 2016-2017 Digital Bazaar, Inc. All rights reserved.
  */
-define([], function() {
-
-'use strict';
-
-function register(module) {
-  module.service('brAgreementService', factory);
-}
-
 /* @ngInject */
-function factory($http, config) {
+export default function factory($http, config) {
   var service = {};
   service.groups = {};
 
@@ -26,8 +18,9 @@ function factory($http, config) {
     return Promise.resolve($http.post(url, {agreement: agreementUrls}))
       .then(function(response) {
         if(response.status !== 201) {
-          throw new Error('There was a problem recording the acceptance of ' +
-          'the agreement. Please try again later or contact support.');
+          throw new Error(
+            'There was a problem recording the acceptance of ' +
+            'the agreement. Please try again later or contact support.');
         }
         return response.data;
       });
@@ -78,7 +71,3 @@ function factory($http, config) {
 
   return service;
 }
-
-return register;
-
-});

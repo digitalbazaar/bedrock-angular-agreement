@@ -1,20 +1,13 @@
 /*!
- * Copyright (c) 2016 Digital Bazaar, Inc. All rights reserved.
+ * Copyright (c) 2016-2017 Digital Bazaar, Inc. All rights reserved.
  */
-define([
-  'angular',
-  './agreement-component',
-  './agreement-service',
-  './agreement-view-component'
-], function(
-  angular) {
-
-'use strict';
+import angular from 'angular';
+import AgreementComponent from './agreement-component.js';
+import AgreementService from './agreement-service.js';
+import AgreementViewComponent from './agreement-view-component.js';
 
 var module = angular.module('bedrock.agreement', ['bedrock.alert']);
 
-Array.prototype.slice.call(arguments, 1).forEach(function(register) {
-  register(module);
-});
-
-});
+module.component('brAgreementComponent', AgreementComponent);
+module.service('brAgreementService', AgreementService);
+module.component('brAgreementViewComponent', AgreementViewComponent);
