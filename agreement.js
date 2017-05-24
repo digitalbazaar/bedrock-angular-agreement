@@ -8,6 +8,6 @@ import AgreementViewComponent from './agreement-view-component.js';
 
 var module = angular.module('bedrock.agreement', ['bedrock.alert']);
 
-module.component('brAgreementComponent', AgreementComponent);
+module.component('brAgreement', AgreementComponent);
 module.service('brAgreementService', AgreementService);
-module.component('brAgreementViewComponent', AgreementViewComponent);
+module.component('brAgreementView', AgreementViewComponent);

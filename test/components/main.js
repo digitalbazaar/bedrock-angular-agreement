@@ -15,7 +15,7 @@ var module = angular.module('bedrock.agreement-test', [
 bedrock.setMainModule(module);
 
 // skipping first 2 arguments
-module.component('brTestHarnessComponent', TestHarnessComponent);
+module.component('brTestHarness', TestHarnessComponent);
 
 /* @ngInject */
 module.config(function($routeProvider, routeResolverProvider) {
