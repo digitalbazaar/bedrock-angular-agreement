@@ -2,13 +2,17 @@
  * Copyright (c) 2016-2017 Digital Bazaar, Inc. All rights reserved.
  */
 import angular from 'angular';
+import * as bedrock from 'bedrock-angular';
 import _ from 'lodash';
 import TestHarnessComponent from './test-harness-component.js';
 
 var module = angular.module('bedrock.agreement-test', [
+  'bedrock',
   'bedrock.agreement', 'bedrock.authn', 'bedrock.authn-password',
   'bedrock.resolver', 'bedrock.session'
 ]);
+
+bedrock.setMainModule(module);
 
 // skipping first 2 arguments
 module.component('brTestHarnessComponent', TestHarnessComponent);
