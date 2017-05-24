@@ -12,6 +12,7 @@
     "package.json"
   ],
   "dependencies": {
+    "angular-stackables": "digitalbazaar/angular-stackables#fix-angular-1.6-history",
     "bedrock-angular": "digitalbazaar/bedrock-angular#systemjs",
     "chai": "^3.5.0",
     "chai-as-promised": "^5.3.0",
