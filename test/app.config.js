@@ -4,6 +4,7 @@
 var bedrock = require('bedrock');
 var config = bedrock.config;
 var path = require('path');
+require('bedrock-views');
 
 var dir = path.join(__dirname);
 config.requirejs.bower.packages.push({
@@ -16,6 +17,12 @@ config.requirejs.bower.packages.push({
   path: path.join(parentDir),
   manifest: path.join(parentDir, 'bower.json')
 });
+
+config.views.system.config.packages.mocha = {
+  main: 'mocha.js',
+  format: 'global',
+  defaultExtension: 'js'
+};
 
 // mongodb config
 config.mongodb.name = 'bedrock_angular_agreements_app';
