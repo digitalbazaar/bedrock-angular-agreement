@@ -21,7 +21,7 @@
     "bedrock-mongodb": "^3.2.1",
     "bedrock-passport": "^3.1.7",
     "bedrock-permission": "^2.4.0",
-    "bedrock-protractor": "^3.3.0",
+    "bedrock-protractor": "digitalbazaar/bedrock-protractor#systemjs",
     "bedrock-requirejs": "digitalbazaar/bedrock-requirejs#systemjs-transition",
     "bedrock-rest": "^2.0.2",
     "bedrock-server": "^2.1.3",
