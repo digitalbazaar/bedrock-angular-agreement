@@ -12,7 +12,7 @@ var module = angular.module('bedrock.agreement-test', [
   'bedrock.resolver', 'bedrock.session'
 ]);
 
-bedrock.setMainModule(module);
+bedrock.setRootModule(module);
 
 // skipping first 2 arguments
 module.component('brTestHarness', TestHarnessComponent);
