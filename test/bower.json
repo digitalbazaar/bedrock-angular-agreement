@@ -12,19 +12,19 @@
     "package.json"
   ],
   "dependencies": {
-    "angular-stackables": "digitalbazaar/angular-stackables#fix-angular-1.6-history",
+    "angular-stackables": "^1.2.0",
     "bedrock-angular": "digitalbazaar/bedrock-angular#systemjs",
     "chai": "^3.5.0",
     "chai-as-promised": "^5.3.0",
     "mocha": "^3.0.0",
-    "bedrock-angular-alert": "digitalbazaar/bedrock-angular-alert#es6",
-    "bedrock-angular-authn": "digitalbazaar/bedrock-angular-authn#es6",
-    "bedrock-angular-form": "digitalbazaar/bedrock-angular-form#es6",
-    "bedrock-angular-model": "digitalbazaar/bedrock-angular-model#es6",
-    "bedrock-angular-authn-password": "digitalbazaar/bedrock-angular-authn-password#es6",
-    "bedrock-angular-resolver": "digitalbazaar/bedrock-angular-resolver#es6",
+    "bedrock-angular-alert": "^3.0.0",
+    "bedrock-angular-authn": "^3.0.0",
+    "bedrock-angular-form": "^3.0.0",
+    "bedrock-angular-model": "^3.0.0",
+    "bedrock-angular-authn-password": "^2.0.0",
+    "bedrock-angular-resolver": "^3.0.0",
     "lodash": "^4.16.4",
-    "bedrock-angular-session": "digitalbazaar/bedrock-angular-session#es6",
+    "bedrock-angular-session": "^4.0.0",
     "angular-material": "^1.1.4"
   },
   "resolutions": {
