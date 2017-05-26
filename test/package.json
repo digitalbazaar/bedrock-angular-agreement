@@ -43,5 +43,23 @@
     "bedrock-views": "digitalbazaar/bedrock-views#systemjs",
     "lodash": "^4.16.4",
     "uuid": "^2.0.3"
+  },
+  "bedrock": {
+    "browserDependencies": [
+      "angular-material",
+      "angular-stackables",
+      "bedrock-angular",
+      "chai",
+      "chai-as-promised",
+      "mocha",
+      "bedrock-angular-alert",
+      "bedrock-angular-authn",
+      "bedrock-angular-form",
+      "bedrock-angular-model",
+      "bedrock-angular-authn-password",
+      "bedrock-angular-resolver",
+      "bedrock-angular-session",
+      "lodash"
+    ]
   }
 }
