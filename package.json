@@ -1,10 +1,11 @@
 {
   "name": "bedrock-angular-agreement",
-  "version": "2.0.0-dev",
+  "version": "1.2.8-0",
   "description": "Bedrock AngularJS Agreement.",
-  "main": "agreement.js",
+  "main": "index.js",
   "dependencies": {
-    "angular": "~1.6.4"
+    "angular": "~1.6.4",
+    "bedrock-angular-modal": "^5.0.2"
   },
   "bedrock": {
     "browserDependencies": "all"
