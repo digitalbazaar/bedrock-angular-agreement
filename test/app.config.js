@@ -7,20 +7,28 @@ var path = require('path');
 require('bedrock-views');
 
 var dir = path.join(__dirname);
-config.requirejs.bower.packages.push({
+var parentDir = path.join(__dirname, '..');
+
+// test pseudo package
+config.views.system.packages.push({
   path: path.join(dir, 'components'),
-  manifest: path.join(dir, 'bower.json')
+  manifest: path.join(dir, 'package.json')
 });
 
-var parentDir = path.join(__dirname, '..');
-config.requirejs.bower.packages.push({
+// bedrock-angular-agreement pseudo package
+config.views.system.packages.push({
   path: path.join(parentDir),
-  manifest: path.join(parentDir, 'bower.json')
+  manifest: path.join(parentDir, 'package.json')
 });
 
 config.views.system.config.packages.mocha = {
   main: 'mocha.js',
   format: 'global',
+  defaultExtension: 'js'
+};
+
+config.views.system.config.packages.chai = {
+  main: 'chai.js',
   defaultExtension: 'js'
 };
 
