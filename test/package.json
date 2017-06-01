@@ -3,7 +3,8 @@
   "version": "0.0.1-0",
   "private": true,
   "scripts": {
-    "test": "node --preserve-symlinks test.js test --framework protractor"
+    "test": "node --preserve-symlinks test.js test --framework protractor",
+    "postinstall": "node --preserve-symlinks test compile-less"
   },
   "dependencies": {
     "angular-animate": "^1.6.4",
@@ -45,7 +46,7 @@
     "bedrock-validation": "^2.2.1",
     "bedrock-views": "digitalbazaar/bedrock-views#remove-requirejs",
     "bootstrap": "^3.3.7",
-    "chai": "^3.5.0",
+    "chai": "^4.0.0",
     "chai-as-promised": "^5.3.0",
     "font-awesome": "~4.7.0",
     "jquery": "~1.11.1",
