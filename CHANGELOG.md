@@ -1,5 +1,10 @@
 # bedrock-angular-agreement ChangeLog
 
+## 2.0.1 - 2017-06-02
+
+### Fixed
+- Remove href attribute to fix stackable.
+
 ## 2.0.0 - 2017-05-31
 
 ### Changed
