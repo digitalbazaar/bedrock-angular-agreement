@@ -5,7 +5,7 @@
       <label>
         <input type="checkbox" ng-model="$ctrl.agreements[agreement].agreed" ng-change="$ctrl.onAgree()">
         I agree to the
-        <a href="#" ng-click="$ctrl.selectedAgreement = $ctrl.agreements[agreement]; $ctrl.showSelectedAgreement=true">
+        <a ng-click="$ctrl.selectedAgreement = $ctrl.agreements[agreement]; $ctrl.showSelectedAgreement=true">
           {{$ctrl.agreements[agreement].title}}
         </a>
       </label>
