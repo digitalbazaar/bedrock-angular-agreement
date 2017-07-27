@@ -12,7 +12,7 @@
     "angular-material": "^1.1.4",
     "angular-sanitize": "^1.6.4",
     "angular-stackables": "^1.2.0",
-    "bedrock": "github:digitalbazaar/bedrock#updateTestDeps",
+    "bedrock": "^1.6.0",
     "bedrock-agreement": "^1.0.0",
     "bedrock-agreement-http": "^1.0.0",
     "bedrock-angular": "digitalbazaar/bedrock-angular#systemjs",
