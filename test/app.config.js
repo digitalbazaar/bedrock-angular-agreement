@@ -1,13 +1,13 @@
 /*!
  * Copyright (c) 2016-2017 Digital Bazaar, Inc. All rights reserved.
  */
-var bedrock = require('bedrock');
-var config = bedrock.config;
-var path = require('path');
+const bedrock = require('bedrock');
+const config = bedrock.config;
+const path = require('path');
 require('bedrock-views');
 
-var dir = path.join(__dirname);
-var parentDir = path.join(__dirname, '..');
+const dir = path.join(__dirname);
+const parentDir = path.join(__dirname, '..');
 
 // test pseudo package
 config.views.system.packages.push({
@@ -38,8 +38,8 @@ config.mongodb.host = 'localhost';
 config.mongodb.port = 27017;
 config.mongodb.local.collection = 'bedrock_angular_agreements_app';
 
-var permissions = config.permission.permissions;
-var roles = config.permission.roles;
+const permissions = config.permission.permissions;
+const roles = config.permission.roles;
 roles['bedrock-test.identity.registered'] = {
   id: 'bedrock-test.identity.registered',
   label: 'Identity Manager',

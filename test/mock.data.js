@@ -3,14 +3,14 @@
  */
 
 'use strict';
-var bedrock = require('bedrock');
-var config = bedrock.config;
-var helpers = require('./helpers');
+const bedrock = require('bedrock');
+const config = bedrock.config;
+const helpers = require('./helpers');
 
-var mock = {};
+const mock = {};
 module.exports = mock;
 
-var userName = '';
+let userName = '';
 mock.identities = {};
 
 userName = 'alpha';
@@ -24,7 +24,7 @@ mock.identities[userName].identity.sysResourceRole = [{
 }];
 
 Object.keys(mock.identities).forEach(function(key) {
-  var i = mock.identities[key];
+  const i = mock.identities[key];
   config['identity-http'].identities.push(i.identity);
   if(i.keys) {
     Array.prototype.push.apply(config.key.keys, [].concat(i.keys));

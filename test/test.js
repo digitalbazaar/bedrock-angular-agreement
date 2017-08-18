@@ -1,10 +1,10 @@
 /*
  * Copyright (c) 2016-2017 Digital Bazaar, Inc. All rights reserved.
  */
-var _ = require('lodash');
-var bedrock = require('bedrock');
-var brIdentity = require('bedrock-identity');
-var util = require('util');
+const _ = require('lodash');
+const bedrock = require('bedrock');
+const brIdentity = require('bedrock-identity');
+const util = require('util');
 // NOTE: it is critical that bedrock-protractor be required first so that
 // it can register a bedrock.cli event listener
 require('bedrock-protractor');
@@ -18,7 +18,7 @@ require('./app.config');
 
 bedrock.events.on('bedrock-express.configure.routes', app => {
   app.post('/createidentity', (req, res) => {
-    var identity = {};
+    const identity = {};
     identity['@context'] = bedrock.config.constants.IDENTITY_CONTEXT_V1_URL;
     identity.id = createIdentityId(req.body.sysSlug);
     identity.type = 'Identity';

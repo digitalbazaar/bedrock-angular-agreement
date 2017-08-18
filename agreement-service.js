@@ -3,20 +3,20 @@
  */
 /* @ngInject */
 export default function factory($http, config) {
-  var service = {};
+  const service = {};
   service.groups = {};
 
-  service.accept = function(agreements) {
-    var agreementUrls = agreements.map(function(a) {
+  service.accept = agreements => {
+    const agreementUrls = agreements.map(a => {
       if(a.indexOf(':') === -1) {
         return config.data.baseUri + a;
       }
       return a;
     });
     // TODO: make url configurable
-    var url = config.data.baseUri + '/agreements/accepted';
-    return Promise.resolve($http.post(url, {agreement: agreementUrls}))
-      .then(function(response) {
+    const url = config.data.baseUri + '/agreements/accepted';
+    return $http.post(url, {agreement: agreementUrls})
+      .then(response => {
         if(response.status !== 201) {
           throw new Error(
             'There was a problem recording the acceptance of ' +
@@ -26,7 +26,7 @@ export default function factory($http, config) {
       });
   };
 
-  service.register = function(group, agreement, options) {
+  service.register = (group, agreement, options) => {
     if(!(group in service.groups)) {
       throw new Error('Group "' + group + '" is not registered.');
     }
@@ -45,13 +45,13 @@ export default function factory($http, config) {
     }
 
     service.groups[group].displayOrder.push(agreement);
-    service.groups[group].displayOrder.sort(function(a, b) {
+    service.groups[group].displayOrder.sort((a, b) => {
       return service.groups[group].agreements[a].title.localeCompare(
         service.groups[group].agreements[b].title);
     });
   };
 
-  service.registerGroup = function(group) {
+  service.registerGroup = group => {
     if(group) {
       service.groups[group] = {
         header: 'Service Agreement',
@@ -62,9 +62,9 @@ export default function factory($http, config) {
     }
   };
 
-  service.getAgreements = function(group) {
-    var agreements = service.groups[group].agreements;
-    return Object.keys(agreements).reduce(function(a, b) {
+  service.getAgreements = group => {
+    const agreements = service.groups[group].agreements;
+    return Object.keys(agreements).reduce((a, b) => {
       return a.concat(config.data.baseUri + agreements[b].templateUrl);
     }, []);
   };

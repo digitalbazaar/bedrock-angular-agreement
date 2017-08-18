@@ -13,9 +13,9 @@ export default {
 
 /* @ngInject */
 function Ctrl($scope, brAgreementService, brAlertService) {
-  var self = this;
+  const self = this;
 
-  self.$onInit = function() {
+  self.$onInit = () => {
     self.visible = {
       agreementModal: true
     };
@@ -23,20 +23,15 @@ function Ctrl($scope, brAgreementService, brAlertService) {
     self.agreed = false;
   };
 
-  self.confirm = function() {
+  self.confirm = () => {
     brAgreementService.accept(brAgreementService.getAgreements(self.group))
-      .then(function() {
-        self.onAgree();
-      })
-      .catch(function(err) {
+      .then(() => self.onAgree())
+      .catch(err => {
         brAlertService.add('error', err, {scope: $scope});
-      })
-      .then(function() {
-        $scope.$apply();
       });
   };
 
-  self.modalClosed = function(err) {
+  self.modalClosed = err => {
     if(err === 'canceled') {
       self.onCancel();
     }

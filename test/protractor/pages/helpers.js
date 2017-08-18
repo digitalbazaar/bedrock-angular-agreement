@@ -1,15 +1,15 @@
 /*!
  * Copyright (c) 2016-2017 Digital Bazaar, Inc. All rights reserved.
  */
-var protractor = global.protractor;
-var EC = protractor.ExpectedConditions;
+const protractor = global.protractor;
+const EC = protractor.ExpectedConditions;
 
-var api = {};
+const api = {};
 module.exports = api;
 
 api.testField = function(modelName, testString, expectedErrorId) {
-  var testElement = element(by.brModel(modelName));
-  var altElement = $('br-demo-warning');
+  const testElement = element(by.brModel(modelName));
+  const altElement = $('br-demo-warning');
   testElement
     .clear()
     .sendKeys(testString);
@@ -18,7 +18,7 @@ api.testField = function(modelName, testString, expectedErrorId) {
   altElement.click();
   element(by.brModel(modelName)).getAttribute('name')
     .then(function(elementName) {
-      var validationError = element(by.attribute('br-model', modelName))
+      const validationError = element(by.attribute('br-model', modelName))
         .element(by.attribute(
           'ng-show',
           ['$ctrl.regForm', elementName, '$error', expectedErrorId].join('.')));
@@ -29,9 +29,9 @@ api.testField = function(modelName, testString, expectedErrorId) {
 
 api.testFieldsMatch =
   function(modelNameA, modelNameB, testStringA, testStringB, expectedErrorId) {
-    var altElement = $('br-demo-warning');
+    const altElement = $('br-demo-warning');
     element(by.brModel(modelNameA)).sendKeys(testStringA);
-    var testElementB = element(by.brModel(modelNameB));
+    const testElementB = element(by.brModel(modelNameB));
     testElementB.sendKeys(testStringB);
     altElement.click();
     element(by.brModel(modelNameB)).getAttribute('name')

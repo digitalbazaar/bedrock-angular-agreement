@@ -6,7 +6,7 @@ import * as bedrock from 'bedrock-angular';
 import _ from 'lodash';
 import TestHarnessComponent from './test-harness-component.js';
 
-var module = angular.module('bedrock.agreement-test', [
+const module = angular.module('bedrock.agreement-test', [
   'bedrock',
   'bedrock.agreement', 'bedrock.authn', 'bedrock.authn-password',
   'bedrock.resolver', 'bedrock.session'
@@ -21,24 +21,24 @@ module.component('brTestHarness', TestHarnessComponent);
 module.config(function($routeProvider, routeResolverProvider) {
 
   routeResolverProvider.add('bedrock.test', 'session', resolve);
-  var agreementRedirect = null;
-  var agreementUrls = {
+  let agreementRedirect = null;
+  const agreementUrls = {
     'bedrock.routea': '/agreementa',
     'bedrock.routeb': '/agreementb'
   };
   /* @ngInject */
   function resolve($location, $route, brAgreementService) {
-    var session = $route.current.locals.session;
-
-    var requiredAgreements = [];
+    const session = $route.current.locals.session;
+    let requiredAgreements = [];
+    let agreementUrl;
     if($route.current.agreement) {
-      var agreementUrl = agreementUrls[$route.current.agreement];
-      var requiredAgreements =
+      agreementUrl = agreementUrls[$route.current.agreement];
+      requiredAgreements =
         brAgreementService.getAgreements($route.current.agreement);
     }
     if(session && session.identity) {
       // see if identity has signed required agreements
-      var hasRequiredAgreements = _.difference(
+      const hasRequiredAgreements = _.difference(
         requiredAgreements, session.identity.agreements).length === 0;
       if(!hasRequiredAgreements) {
         if($location.url() === agreementUrl) {
@@ -91,7 +91,7 @@ module.config(function($routeProvider, routeResolverProvider) {
         relocate: function($location) {
           return function() {
             if(agreementRedirect) {
-              var redirect = agreementRedirect;
+              const redirect = agreementRedirect;
               agreementRedirect = null;
               return $location.url(redirect);
             }
@@ -117,7 +117,7 @@ module.config(function($routeProvider, routeResolverProvider) {
         relocate: function($location) {
           return function() {
             if(agreementRedirect) {
-              var redirect = agreementRedirect;
+              const redirect = agreementRedirect;
               agreementRedirect = null;
               return $location.url(redirect);
             }

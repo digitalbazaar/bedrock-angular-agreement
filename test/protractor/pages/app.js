@@ -1,12 +1,12 @@
 /*!
  * Copyright (c) 2016-2017 Digital Bazaar, Inc. All rights reserved.
  */
-var api = {};
+const api = {};
 module.exports = api;
 
 api.login = function(identity) {
   element(by.buttonText('Sign In')).click();
-  var c = $('br-authn-password');
+  const c = $('br-authn-password');
   c.element(by.brModel('$ctrl.sysIdentifier')).sendKeys(identity.sysIdentifier);
   c.element(by.brModel('$ctrl.password')).sendKeys(identity.password);
   c.element(by.buttonText('Sign In')).click();

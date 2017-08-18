@@ -15,7 +15,7 @@ export default {
 
 /* @ngInject */
 function Ctrl(brAgreementService) {
-  var self = this;
+  const self = this;
 
   self.$onInit = function() {
     self.agreementHeader = brAgreementService.groups[self.group].header;
@@ -27,13 +27,11 @@ function Ctrl(brAgreementService) {
     self.agreed = allAgreed();
   };
 
-  self.onAgree = function() {
-    self.agreed = allAgreed();
-  };
+  self.onAgree = () => self.agreed = allAgreed();
 
   function allAgreed() {
-    var agreed = true;
-    for(var i = 0; i < self.displayOrder.length; i++) {
+    let agreed = true;
+    for(let i = 0; i < self.displayOrder.length; i++) {
       if(!self.agreements[self.displayOrder[i]].agreed) {
         agreed = false;
         break;
