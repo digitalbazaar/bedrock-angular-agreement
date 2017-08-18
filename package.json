@@ -4,7 +4,8 @@
   "description": "Bedrock AngularJS Agreement.",
   "main": "index.js",
   "dependencies": {
-    "angular": "~1.6.4",
+    "bedrock-angular": "^3.0.0",
+    "bedrock-angular-material": "^1.0.0",
     "bedrock-angular-modal": "^5.0.2"
   },
   "bedrock": {

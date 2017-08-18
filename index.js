@@ -7,7 +7,7 @@ import AgreementService from './agreement-service.js';
 import AgreementViewComponent from './agreement-view-component.js';
 
 var module = angular.module(
-  'bedrock.agreement', ['bedrock.alert', 'bedrock.modal']);
+  'bedrock.agreement', ['bedrock.alert', 'bedrock.modal', 'ngMaterial']);
 
 module.component('brAgreement', AgreementComponent);
 module.service('brAgreementService', AgreementService);
