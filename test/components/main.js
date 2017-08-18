@@ -3,13 +3,11 @@
  */
 import angular from 'angular';
 import * as bedrock from 'bedrock-angular';
-import _ from 'lodash';
 import TestHarnessComponent from './test-harness-component.js';
 
 const module = angular.module('bedrock.agreement-test', [
-  'bedrock',
   'bedrock.agreement', 'bedrock.authn', 'bedrock.authn-password',
-  'bedrock.resolver', 'bedrock.session'
+  'bedrock.resolver', 'bedrock.session', 'ngMaterial'
 ]);
 
 bedrock.setRootModule(module);
@@ -38,8 +36,9 @@ module.config(function($routeProvider, routeResolverProvider) {
     }
     if(session && session.identity) {
       // see if identity has signed required agreements
-      const hasRequiredAgreements = _.difference(
-        requiredAgreements, session.identity.agreements).length === 0;
+      const hasRequiredAgreements = requiredAgreements.filter(
+        a => !session.identity.agreements.includes(a)).length === 0;
+
       if(!hasRequiredAgreements) {
         if($location.url() === agreementUrl) {
           // already on agreement page, nothing to do

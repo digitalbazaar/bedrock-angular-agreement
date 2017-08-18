@@ -2,11 +2,12 @@
   "name": "bedrock-angular-agreement",
   "version": "2.0.2-0",
   "description": "Bedrock AngularJS Agreement.",
-  "main": "index.js",
+  "browser": "index.js",
   "dependencies": {
     "bedrock-angular": "^3.0.0",
+    "bedrock-angular-alert": "digitalbazaar/bedrock-angular-alert#material",
     "bedrock-angular-material": "^1.0.0",
-    "bedrock-angular-modal": "^5.0.2"
+    "bedrock-angular-modal": "digitalbazaar/bedrock-angular-modal#material"
   },
   "bedrock": {
     "browserDependencies": "all"
