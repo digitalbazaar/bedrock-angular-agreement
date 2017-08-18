@@ -4,33 +4,14 @@
 const bedrock = require('bedrock');
 const config = bedrock.config;
 const path = require('path');
-require('bedrock-views');
 
 const dir = path.join(__dirname);
-const parentDir = path.join(__dirname, '..');
 
 // test pseudo package
 config.views.system.packages.push({
   path: path.join(dir, 'components'),
   manifest: path.join(dir, 'package.json')
 });
-
-// bedrock-angular-agreement pseudo package
-config.views.system.packages.push({
-  path: path.join(parentDir),
-  manifest: path.join(parentDir, 'package.json')
-});
-
-config.views.system.config.packages.mocha = {
-  main: 'mocha.js',
-  format: 'global',
-  defaultExtension: 'js'
-};
-
-config.views.system.config.packages.chai = {
-  main: 'chai.js',
-  defaultExtension: 'js'
-};
 
 // mongodb config
 config.mongodb.name = 'bedrock_angular_agreements_app';

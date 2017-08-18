@@ -5,14 +5,13 @@ const _ = require('lodash');
 const bedrock = require('bedrock');
 const brIdentity = require('bedrock-identity');
 const util = require('util');
-// NOTE: it is critical that bedrock-protractor be required first so that
-// it can register a bedrock.cli event listener
-require('bedrock-protractor');
 require('bedrock-agreement-http');
 require('bedrock-authn-password');
 require('bedrock-identity-http');
+require('bedrock-protractor');
 require('bedrock-session-http');
 require('bedrock-views');
+require('bedrock-webpack');
 require('./mock.data');
 require('./app.config');
 

@@ -38,11 +38,13 @@
     "bedrock-test": "digitalbazaar/bedrock-test#2.x",
     "bedrock-validation": "^2.2.1",
     "bedrock-views": "^5.0.0",
+    "bedrock-webpack": "^1.1.1",
     "uuid": "^2.0.3"
   },
   "bedrock": {
     "browserDependencies": [
       "bedrock-angular",
+      "bedrock-angular-agreement",
       "bedrock-angular-authn",
       "bedrock-angular-form",
       "bedrock-angular-authn-password",
