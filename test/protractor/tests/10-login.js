@@ -28,10 +28,9 @@ describe('bedrock-angular-agreement', () => {
       agreement.checkFields();
       element(by.buttonText('Confirm')).isEnabled().should.eventually.be.false;
       element.all(by.repeater('agreement in $ctrl.displayOrder'))
-        .then(agreements => {
-          const agree = agreements[0].element(by.tagName('input'));
-          agree.click();
-        });
+        .then(agreements => agreements.forEach(a => {
+          a.$('.md-container').click();
+        }));
       agreement.confirmButton().isEnabled().should.eventually.be.true;
       agreement.confirmButton().click();
       $('h3').getText().should.eventually.equal('Route A');
@@ -68,15 +67,13 @@ describe('bedrock-angular-agreement', () => {
       a.$('h3').getText().should.eventually.equal('Agreement B-2 goes here.');
       element(by.buttonText('Close')).click();
       element.all(by.repeater('agreement in $ctrl.displayOrder'))
-        .then(agreements => {
-          agreements.forEach((a, i, array) => {
-            a.element(by.tagName('input')).click();
-            // confirmButton should not be enabled until all are checked
-            if(i < array.length - 1) {
-              agreement.confirmButton().isEnabled().should.eventually.be.false;
-            }
-          });
-        });
+        .then(agreements => agreements.forEach((a, i, array) => {
+          a.$('.md-container').click();
+          // confirmButton should not be enabled until all are checked
+          if(i < array.length - 1) {
+            agreement.confirmButton().isEnabled().should.eventually.be.false;
+          }
+        }));
       agreement.confirmButton().isEnabled().should.eventually.be.true;
       agreement.confirmButton().click();
       $('h3').getText().should.eventually.equal('Route B');

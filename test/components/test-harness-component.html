@@ -1,6 +1,6 @@
 <br-authn-login br-display-login="$ctrl.showLogin"></br-authn-login>
-<button ng-click="$ctrl.navigate('/routea');" type="button" class="btn btn-primary">Route A</button>
-<button ng-click="$ctrl.navigate('/routeb');" type="button" class="btn btn-primary">Route B</button>
+<md-button ng-click="$ctrl.navigate('/routea');" type="button" class="md-primary md-raised">Route A</md-button>
+<md-button ng-click="$ctrl.navigate('/routeb');" type="button" class="md-primary md-raised">Route B</md-button>
 <h1>Create Identity</h1>
 <form name="$ctrl.identityForm">
   <br-input br-model="$ctrl.sysSlug"
@@ -12,7 +12,9 @@
       Enter a unique short name for this identity.
     </br-input-help>
   </br-input>
-  <button ng-click="$ctrl.addIdentity($ctrl.sysSlug)">Create Identity</button>
+  <md-button ng-click="$ctrl.addIdentity($ctrl.sysSlug)" class="md-primary md-raised">
+    Create Identity
+  </md-button>
 </form>
 <h1>Test Data</h1>
 <pre>{{$ctrl.testData | json}}</pre>
