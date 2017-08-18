@@ -22,7 +22,8 @@ module.config(function($routeProvider, routeResolverProvider) {
   let agreementRedirect = null;
   const agreementUrls = {
     'bedrock.routea': '/agreementa',
-    'bedrock.routeb': '/agreementb'
+    'bedrock.routeb': '/agreementb',
+    'bedrock.routec': '/agreementc'
   };
   /* @ngInject */
   function resolve($location, $route, brAgreementService) {
@@ -72,6 +73,12 @@ module.config(function($routeProvider, routeResolverProvider) {
       session: 'required',
       agreement: 'bedrock.routeb',
       template: '<h3>Route B</h3>'
+    })
+    .when('/routec', {
+      title: 'Route C',
+      session: 'required',
+      agreement: 'bedrock.routec',
+      template: '<h3>Route C</h3>'
     })
     .when('/agreementa', {
       title: 'Agreements A',
@@ -124,6 +131,12 @@ module.config(function($routeProvider, routeResolverProvider) {
           };
         }
       }
+    })
+    .when('/agreementc', {
+      template: `<br-agreement
+        ng-model="$ctrl.agreed"
+        br-agreement-group="bedrock.routec">
+      </br-agreement>`
     });
 });
 
@@ -149,5 +162,20 @@ module.run(function(brAgreementService) {
     'bedrock.routeb', 'testTos-b-2', {
       title: 'Terms of Service B-2',
       templateUrl: 'bedrock-angular-agreement-test/agreements/tos-b-2.html'
+    });
+
+  brAgreementService.registerGroup('bedrock.routec');
+  brAgreementService.groups['bedrock.routec'].displayOrder = [
+    'testTos-c-1', 'testTos-c-2'
+  ];
+  brAgreementService.register(
+    'bedrock.routec', 'testTos-c-1', {
+      title: 'Terms of Service C-1',
+      templateUrl: 'bedrock-angular-agreement-test/agreements/tos-c-1.html'
+    });
+  brAgreementService.register(
+    'bedrock.routec', 'testTos-c-2', {
+      title: 'Terms of Service C-2',
+      templateUrl: 'bedrock-angular-agreement-test/agreements/tos-c-2.html'
     });
 });

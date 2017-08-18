@@ -86,5 +86,13 @@ describe('bedrock-angular-agreement', () => {
       bedrock.waitForUrl('/didnotagree');
       $('h3').getText().should.eventually.equal('Did Not Agree');
     });
+    it('shows agreements with a header', () => {
+      element(by.buttonText('Route C')).click();
+      bedrock.waitForUrl('/agreementc');
+      browser.wait(EC.visibilityOf(agreement.component()), 3000);
+      const header = $('legend');
+      browser.wait(EC.visibilityOf(header), 3000);
+      header.getText().should.eventually.equal('Service Agreement');
+    });
   });
 });
