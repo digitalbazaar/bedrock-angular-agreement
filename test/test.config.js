@@ -20,7 +20,12 @@ config.protractor.config.suites['general'] =
 
 // default multiCapabilities, used with Sauce Labs
 const caps = config.sauceLabs.capabilities;
+
+// working suite of browsers
 config.sauceLabs.multiCapabilities = [
-  caps.linux.firefox, caps.linux.chrome, caps.osx1011.safari,
-  caps.osx1010.safari, caps.windows10.ie
+  caps.osx1011.safari,
+  caps.windows10.chrome,
+  caps.windows10.edge,
+  caps.windows10.firefox,
+  caps.windows10.ie
 ];
