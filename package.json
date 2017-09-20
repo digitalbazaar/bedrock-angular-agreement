@@ -4,7 +4,7 @@
   "description": "Bedrock AngularJS Agreement.",
   "browser": "index.js",
   "dependencies": {
-    "bedrock-angular": "^3.0.0",
+    "bedrock-angular": "^4.0.0",
     "bedrock-angular-alert": "digitalbazaar/bedrock-angular-alert#material",
     "bedrock-angular-material": "^1.0.0",
     "bedrock-angular-modal": "digitalbazaar/bedrock-angular-modal#material"
