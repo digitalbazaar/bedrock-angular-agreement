@@ -9,10 +9,10 @@
   },
   "dependencies": {
     "angular-stackables": "digitalbazaar/angular-stackables#disableHistory",
-    "bedrock": "^1.6.0",
+    "bedrock": "digitalbazaar/bedrock#jsonld-1.1",
     "bedrock-agreement": "^1.0.0",
     "bedrock-agreement-http": "^1.0.0",
-    "bedrock-angular": "^3.0.0",
+    "bedrock-angular": "^4.0.0",
     "bedrock-angular-agreement": "file:..",
     "bedrock-angular-authn": "digitalbazaar/bedrock-angular-authn#material",
     "bedrock-angular-authn-password": "digitalbazaar/bedrock-angular-authn-password#material",
@@ -48,7 +48,9 @@
       "bedrock-angular-authn",
       "bedrock-angular-form",
       "bedrock-angular-authn-password",
-      "bedrock-angular-session"
+      "bedrock-angular-session",
+      "bedrock-angular-material",
+      "bedrock-angular-resolver"
     ]
   },
   "main": "main.js"
