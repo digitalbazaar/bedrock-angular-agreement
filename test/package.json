@@ -8,8 +8,7 @@
     "postinstall": "node --preserve-symlinks test compile-less"
   },
   "dependencies": {
-    "angular-stackables": "digitalbazaar/angular-stackables#disableHistory",
-    "bedrock": "digitalbazaar/bedrock#jsonld-1.1",
+    "bedrock": "^1.7.0",
     "bedrock-agreement": "^1.0.0",
     "bedrock-agreement-http": "^1.0.0",
     "bedrock-angular": "^4.0.0",
@@ -35,7 +34,7 @@
     "bedrock-rest": "^2.0.2",
     "bedrock-server": "^2.3.0",
     "bedrock-session-http": "^3.0.2",
-    "bedrock-test": "digitalbazaar/bedrock-test#2.x",
+    "bedrock-test": "^2.0.0",
     "bedrock-validation": "^2.2.1",
     "bedrock-views": "^5.0.0",
     "bedrock-webpack": "^1.1.1",
