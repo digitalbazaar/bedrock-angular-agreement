@@ -20,6 +20,7 @@ bedrock.events.on('bedrock-express.configure.routes', app => {
     const identity = {};
     identity['@context'] = bedrock.config.constants.IDENTITY_CONTEXT_V1_URL;
     identity.id = createIdentityId(req.body.sysSlug);
+    identity.email = req.body.email;
     identity.type = 'Identity';
     identity.sysSlug = req.body.sysSlug;
     identity.sysResourceRole = req.body.sysResourceRole;

@@ -35,7 +35,7 @@ function Ctrl($http, $location, brAuthnService) {
   function createIdentity(userName) {
     const newIdentity = {
       sysSlug: userName,
-      email: userName + '@bedrock.dev',
+      email: userName + '@bedrock.local',
       sysPassword: 'password',
       sysResourceRole: [{
         sysRole: 'bedrock-test.identity.registered',
