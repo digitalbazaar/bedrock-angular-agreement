@@ -7,7 +7,8 @@ module.exports = api;
 api.login = function(identity) {
   element(by.buttonText('Sign In')).click();
   const c = $('br-authn-password');
-  c.element(by.brModel('$ctrl.sysIdentifier')).sendKeys(identity.sysIdentifier);
+  c.element(by.brModel('$ctrl.sysIdentifier'))
+    .sendKeys(`${identity.sysIdentifier}@bedrock.local`);
   c.element(by.brModel('$ctrl.password')).sendKeys(identity.password);
   c.element(by.buttonText('Sign In')).click();
 };
