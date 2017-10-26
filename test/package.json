@@ -16,6 +16,7 @@
     "bedrock-angular-authn": "digitalbazaar/bedrock-angular-authn#material",
     "bedrock-angular-authn-password": "digitalbazaar/bedrock-angular-authn-password#material",
     "bedrock-angular-form": "^3.0.0",
+    "bedrock-angular-material": "^1.0.0",
     "bedrock-angular-resolver": "^3.0.0",
     "bedrock-angular-session": "^4.0.0",
     "bedrock-authn-password": "^3.0.3",

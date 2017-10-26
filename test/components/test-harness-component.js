@@ -21,8 +21,8 @@ function Ctrl($http, $location, brAuthnService) {
     self.testData = identity;
   };
 
-  self.addIdentity = userName => {
-    return $http.post('/createidentity', createIdentity(userName))
+  self.addIdentity = (userName, password) => {
+    return $http.post('/createidentity', createIdentity(userName, password))
       .then(response => {
         self.testData = response.data.identity;
       });
@@ -32,11 +32,11 @@ function Ctrl($http, $location, brAuthnService) {
     $location.url(route);
   };
 
-  function createIdentity(userName) {
+  function createIdentity(userName, password) {
     const newIdentity = {
       sysSlug: userName,
-      email: userName + '@bedrock.local',
-      sysPassword: 'password',
+      email: userName,
+      sysPassword: password,
       sysResourceRole: [{
         sysRole: 'bedrock-test.identity.registered',
         generateResource: 'id'
