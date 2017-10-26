@@ -39,8 +39,9 @@ describe('bedrock-angular-agreement', () => {
       element(by.buttonText('Route A')).click();
       bedrock.waitForUrl('/agreementa');
       browser.wait(EC.visibilityOf(agreement.component()), 3000);
+      agreement.component().isDisplayed().should.eventually.be.true;
       element(by.linkText('Terms of Service')).click();
-      const modalTitle = $('h3.modal-title');
+      const modalTitle = $('h2');
       browser.wait(EC.visibilityOf(modalTitle), 3000);
       modalTitle.getText().should.eventually.equal('Service Agreement');
       const a = element.all(by.tagName('br-modal-body')).last();
@@ -53,14 +54,14 @@ describe('bedrock-angular-agreement', () => {
       browser.wait(EC.visibilityOf(agreement.component()), 3000);
       agreement.confirmButton().isEnabled().should.eventually.be.false;
       element(by.linkText('Terms of Service B-1')).click();
-      let modalTitle = $('h3.modal-title');
+      let modalTitle = $('h2');
       browser.wait(EC.visibilityOf(modalTitle), 3000);
       modalTitle.getText().should.eventually.equal('Service Agreement');
       let a = element.all(by.tagName('br-modal-body')).last();
       a.$('h3').getText().should.eventually.equal('Agreement B-1 goes here.');
       element(by.buttonText('Close')).click();
       element(by.linkText('Terms of Service B-2')).click();
-      modalTitle = $('h3.modal-title');
+      modalTitle = $('h2');
       browser.wait(EC.visibilityOf(modalTitle), 3000);
       modalTitle.getText().should.eventually.equal('Service Agreement');
       a = element.all(by.tagName('br-modal-body')).last();
@@ -82,7 +83,7 @@ describe('bedrock-angular-agreement', () => {
       element(by.buttonText('Route A')).click();
       bedrock.waitForUrl('/agreementa');
       browser.wait(EC.visibilityOf(agreement.component()), 3000);
-      $('a.stackable-cancel').click();
+      $('button.stackable-cancel').click();
       bedrock.waitForUrl('/didnotagree');
       $('h3').getText().should.eventually.equal('Did Not Agree');
     });
