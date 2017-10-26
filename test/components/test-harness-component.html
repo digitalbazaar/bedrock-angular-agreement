@@ -7,13 +7,48 @@
   <br-input br-model="$ctrl.sysSlug"
     br-options="{
       name: 'slug',
-      label: 'Short Name'
-    }">
+      label: 'Email Address',
+      theme: 'material',
+      type: 'email',
+      showValidation: true
+    }" required>
     <br-input-help>
-      Enter a unique short name for this identity.
+      Enter a unique email for this identity.
     </br-input-help>
+    <br-input-validation-errors>
+      <p ng-show="$ctrl.identityForm.slug.$error.required">
+        Email is required.
+      </p>
+      <p ng-show="$ctrl.identityForm.slug.$error">
+        You must enter a valid email address.
+      </p>
+    </br-input-validation-errors>
   </br-input>
-  <md-button ng-click="$ctrl.addIdentity($ctrl.sysSlug)" class="md-primary md-raised">
+  <br-input br-model="$ctrl.sysPassword"
+    br-options="{
+      name: 'password',
+      label: 'Password',
+      theme: 'material',
+      type: 'password',
+      showValidation: true
+    }" ng-minlength="8" ng-maxlength="32" required>
+    <br-input-help>
+    Please enter a secure password that is between 8 and 32
+characters long.
+    </br-input-help>
+    <br-input-validation-errors>
+      <p ng-show="$ctrl.identityForm.sysPassword.$error.required">
+        Password is required.
+      </p>
+      <p ng-show="$ctrl.identityForm.sysPassword.$error.minlength">
+        Password must be longer than 6 characters.
+      </p>
+      <p ng-show="$ctrl.identityForm.sysPassword.$error.maxlength">
+        Password must be shorter than 32 characters.
+      </p>
+    </br-input-validation-errors>
+  </br-input>
+  <md-button ng-click="$ctrl.addIdentity($ctrl.sysSlug,$ctrl.sysPassword)" class="md-primary md-raised">
     Create Identity
   </md-button>
 </form>

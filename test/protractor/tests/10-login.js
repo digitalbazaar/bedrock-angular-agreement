@@ -13,7 +13,7 @@ describe('bedrock-angular-agreement', () => {
   describe('agreements', () => {
     beforeEach(function() {
       const testIdentity = {
-        sysIdentifier: uuid().substr(0, 23),
+        sysIdentifier: uuid().substr(0, 23) + '@bedrock.local',
         password: 'password'
       };
       bedrock.get('/');

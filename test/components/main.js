@@ -7,7 +7,8 @@ import TestHarnessComponent from './test-harness-component.js';
 
 const module = angular.module('bedrock.agreement-test', [
   'bedrock.agreement', 'bedrock.authn', 'bedrock.authn-password',
-  'bedrock.resolver', 'bedrock.session', 'ngMaterial'
+  'bedrock.resolver', 'bedrock.session', 'ngMaterial', 'ngMessages',
+  'bedrock.form'
 ]);
 
 bedrock.setRootModule(module);

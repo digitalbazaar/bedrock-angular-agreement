@@ -13,14 +13,15 @@ module.exports = api;
 
 api.createIdentity = function(options) {
   const userName = options.userName || uuid();
+  const password = options.password || 'password';
   const newIdentity = {
     id: config.server.baseUri + config['identity-http'].basePath +
       '/' + userName,
     type: 'Identity',
     sysSlug: userName,
     label: userName,
-    email: userName + '@bedrock.dev',
-    sysPassword: 'password',
+    email: userName,
+    sysPassword: password,
     sysPublic: ['label', 'url', 'description'],
     sysStatus: 'active',
     url: config.server.baseUri,
