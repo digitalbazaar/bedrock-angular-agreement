@@ -1,26 +1,26 @@
 /*
  * Copyright (c) 2016-2017 Digital Bazaar, Inc. All rights reserved.
  */
-var _ = require('lodash');
-var bedrock = require('bedrock');
-var brIdentity = require('bedrock-identity');
-var util = require('util');
-// NOTE: it is critical that bedrock-protractor be required first so that
-// it can register a bedrock.cli event listener
-require('bedrock-protractor');
+const _ = require('lodash');
+const bedrock = require('bedrock');
+const brIdentity = require('bedrock-identity');
+const util = require('util');
 require('bedrock-agreement-http');
 require('bedrock-authn-password');
 require('bedrock-identity-http');
+require('bedrock-protractor');
 require('bedrock-session-http');
 require('bedrock-views');
+require('bedrock-webpack');
 require('./mock.data');
 require('./app.config');
 
 bedrock.events.on('bedrock-express.configure.routes', app => {
   app.post('/createidentity', (req, res) => {
-    var identity = {};
+    const identity = {};
     identity['@context'] = bedrock.config.constants.IDENTITY_CONTEXT_V1_URL;
     identity.id = createIdentityId(req.body.sysSlug);
+    identity.email = req.body.email;
     identity.type = 'Identity';
     identity.sysSlug = req.body.sysSlug;
     identity.sysResourceRole = req.body.sysResourceRole;

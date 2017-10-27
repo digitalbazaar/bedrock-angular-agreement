@@ -1,17 +1,17 @@
 /*!
  * Copyright (c) 2016-2017 Digital Bazaar, Inc. All rights reserved.
  */
-var api = {};
+const api = {};
 module.exports = api;
 
 api.COMPONENT_TAG = 'br-agreement';
 
 api.checkFields = function() {
-  var c = api.component();
-  var elements = [];
+  const c = api.component();
+  const elements = [];
   elements.push(element(by.buttonText('Confirm')));
   elements.push(c.element(by.linkText('Terms of Service')));
-  for(var i in elements) {
+  for(const i in elements) {
     elements[i].isPresent().should.eventually.be.true;
   }
 };

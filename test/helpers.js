@@ -4,23 +4,24 @@
 
 'use strict';
 
-var bedrock = require('bedrock');
-var config = bedrock.config;
-var uuid = require('uuid').v4;
+const bedrock = require('bedrock');
+const config = bedrock.config;
+const uuid = require('uuid').v4;
 
-var api = {};
+const api = {};
 module.exports = api;
 
 api.createIdentity = function(options) {
-  var userName = options.userName || uuid();
-  var newIdentity = {
+  const userName = options.userName || uuid();
+  const password = options.password || 'password';
+  const newIdentity = {
     id: config.server.baseUri + config['identity-http'].basePath +
       '/' + userName,
     type: 'Identity',
     sysSlug: userName,
     label: userName,
-    email: userName + '@bedrock.dev',
-    sysPassword: 'password',
+    email: userName,
+    sysPassword: password,
     sysPublic: ['label', 'url', 'description'],
     sysStatus: 'active',
     url: config.server.baseUri,

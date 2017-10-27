@@ -3,13 +3,12 @@
  */
 import angular from 'angular';
 import * as bedrock from 'bedrock-angular';
-import _ from 'lodash';
 import TestHarnessComponent from './test-harness-component.js';
 
-var module = angular.module('bedrock.agreement-test', [
-  'bedrock',
+const module = angular.module('bedrock.agreement-test', [
   'bedrock.agreement', 'bedrock.authn', 'bedrock.authn-password',
-  'bedrock.resolver', 'bedrock.session'
+  'bedrock.resolver', 'bedrock.session', 'ngMaterial', 'ngMessages',
+  'bedrock.form'
 ]);
 
 bedrock.setRootModule(module);
@@ -21,25 +20,27 @@ module.component('brTestHarness', TestHarnessComponent);
 module.config(function($routeProvider, routeResolverProvider) {
 
   routeResolverProvider.add('bedrock.test', 'session', resolve);
-  var agreementRedirect = null;
-  var agreementUrls = {
+  let agreementRedirect = null;
+  const agreementUrls = {
     'bedrock.routea': '/agreementa',
-    'bedrock.routeb': '/agreementb'
+    'bedrock.routeb': '/agreementb',
+    'bedrock.routec': '/agreementc'
   };
   /* @ngInject */
   function resolve($location, $route, brAgreementService) {
-    var session = $route.current.locals.session;
-
-    var requiredAgreements = [];
+    const session = $route.current.locals.session;
+    let requiredAgreements = [];
+    let agreementUrl;
     if($route.current.agreement) {
-      var agreementUrl = agreementUrls[$route.current.agreement];
-      var requiredAgreements =
+      agreementUrl = agreementUrls[$route.current.agreement];
+      requiredAgreements =
         brAgreementService.getAgreements($route.current.agreement);
     }
     if(session && session.identity) {
       // see if identity has signed required agreements
-      var hasRequiredAgreements = _.difference(
-        requiredAgreements, session.identity.agreements).length === 0;
+      const hasRequiredAgreements = requiredAgreements.filter(
+        a => !session.identity.agreements.includes(a)).length === 0;
+
       if(!hasRequiredAgreements) {
         if($location.url() === agreementUrl) {
           // already on agreement page, nothing to do
@@ -74,6 +75,12 @@ module.config(function($routeProvider, routeResolverProvider) {
       agreement: 'bedrock.routeb',
       template: '<h3>Route B</h3>'
     })
+    .when('/routec', {
+      title: 'Route C',
+      session: 'required',
+      agreement: 'bedrock.routec',
+      template: '<h3>Route C</h3>'
+    })
     .when('/agreementa', {
       title: 'Agreements A',
       template: '<br-agreement-view br-agreement-group="bedrock.routea" ' +
@@ -91,7 +98,7 @@ module.config(function($routeProvider, routeResolverProvider) {
         relocate: function($location) {
           return function() {
             if(agreementRedirect) {
-              var redirect = agreementRedirect;
+              const redirect = agreementRedirect;
               agreementRedirect = null;
               return $location.url(redirect);
             }
@@ -117,7 +124,7 @@ module.config(function($routeProvider, routeResolverProvider) {
         relocate: function($location) {
           return function() {
             if(agreementRedirect) {
-              var redirect = agreementRedirect;
+              const redirect = agreementRedirect;
               agreementRedirect = null;
               return $location.url(redirect);
             }
@@ -125,6 +132,12 @@ module.config(function($routeProvider, routeResolverProvider) {
           };
         }
       }
+    })
+    .when('/agreementc', {
+      template: `<br-agreement
+        ng-model="$ctrl.agreed"
+        br-agreement-group="bedrock.routec">
+      </br-agreement>`
     });
 });
 
@@ -150,5 +163,20 @@ module.run(function(brAgreementService) {
     'bedrock.routeb', 'testTos-b-2', {
       title: 'Terms of Service B-2',
       templateUrl: 'bedrock-angular-agreement-test/agreements/tos-b-2.html'
+    });
+
+  brAgreementService.registerGroup('bedrock.routec');
+  brAgreementService.groups['bedrock.routec'].displayOrder = [
+    'testTos-c-1', 'testTos-c-2'
+  ];
+  brAgreementService.register(
+    'bedrock.routec', 'testTos-c-1', {
+      title: 'Terms of Service C-1',
+      templateUrl: 'bedrock-angular-agreement-test/agreements/tos-c-1.html'
+    });
+  brAgreementService.register(
+    'bedrock.routec', 'testTos-c-2', {
+      title: 'Terms of Service C-2',
+      templateUrl: 'bedrock-angular-agreement-test/agreements/tos-c-2.html'
     });
 });

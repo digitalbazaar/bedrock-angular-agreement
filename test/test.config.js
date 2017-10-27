@@ -1,9 +1,9 @@
 /*
  * Copyright (c) 2016-2017 Digital Bazaar, Inc. All rights reserved.
  */
-var bedrock = require('bedrock');
-var config = bedrock.config;
-var path = require('path');
+const bedrock = require('bedrock');
+const config = bedrock.config;
+const path = require('path');
 
 // mongodb config
 config.mongodb.name = 'bedrock_angular_agreement_test';
@@ -19,8 +19,13 @@ config.protractor.config.suites['general'] =
   path.join(__dirname, 'protractor', 'tests', '**', '*.js');
 
 // default multiCapabilities, used with Sauce Labs
-var caps = config.sauceLabs.capabilities;
+const caps = config.sauceLabs.capabilities;
+
+// working suite of browsers
 config.sauceLabs.multiCapabilities = [
-  caps.linux.firefox, caps.linux.chrome, caps.osx1011.safari,
-  caps.osx1010.safari, caps.windows10.ie
+  caps.osx1011.safari,
+  caps.windows10.chrome,
+  caps.windows10.edge,
+  caps.windows10.firefox,
+  caps.windows10.ie
 ];

@@ -8,7 +8,7 @@ export default {
 
 /* @ngInject */
 function Ctrl($http, $location, brAuthnService) {
-  var self = this;
+  const self = this;
   self.showLogin = false;
   self.testData = {};
 
@@ -17,26 +17,26 @@ function Ctrl($http, $location, brAuthnService) {
     methods: brAuthnService.methods
   };
 
-  self.onLogin = function(identity) {
+  self.onLogin = identity => {
     self.testData = identity;
   };
 
-  self.addIdentity = function(userName) {
-    return $http.post('/createidentity', createIdentity(userName))
-      .then(function(response) {
+  self.addIdentity = (userName, password) => {
+    return $http.post('/createidentity', createIdentity(userName, password))
+      .then(response => {
         self.testData = response.data.identity;
       });
   };
 
-  self.navigate = function(route) {
+  self.navigate = route => {
     $location.url(route);
   };
 
-  function createIdentity(userName) {
-    var newIdentity = {
+  function createIdentity(userName, password) {
+    const newIdentity = {
       sysSlug: userName,
-      email: userName + '@bedrock.dev',
-      sysPassword: 'password',
+      email: userName,
+      sysPassword: password,
       sysResourceRole: [{
         sysRole: 'bedrock-test.identity.registered',
         generateResource: 'id'

@@ -1,19 +1,19 @@
-  /*!
+/*!
  * Copyright (c) 2016-2017 Digital Bazaar, Inc. All rights reserved.
  */
-var bedrock = global.bedrock;
-var uuid = require('uuid').v4;
-var protractor = global.protractor;
-var EC = protractor.ExpectedConditions;
+const bedrock = global.bedrock;
+const uuid = require('uuid').v4;
+const protractor = global.protractor;
+const EC = protractor.ExpectedConditions;
 
-var app = bedrock.pages['bedrock-angular-agreement'].app;
-var agreement = bedrock.pages['bedrock-angular-agreement'].agreement;
+const app = bedrock.pages['bedrock-angular-agreement'].app;
+const agreement = bedrock.pages['bedrock-angular-agreement'].agreement;
 
 describe('bedrock-angular-agreement', () => {
   describe('agreements', () => {
     beforeEach(function() {
-      var testIdentity = {
-        sysIdentifier: uuid().substr(0, 23),
+      const testIdentity = {
+        sysIdentifier: uuid().substr(0, 23) + '@bedrock.local',
         password: 'password'
       };
       bedrock.get('/');
@@ -28,10 +28,9 @@ describe('bedrock-angular-agreement', () => {
       agreement.checkFields();
       element(by.buttonText('Confirm')).isEnabled().should.eventually.be.false;
       element.all(by.repeater('agreement in $ctrl.displayOrder'))
-        .then(agreements => {
-          var agree = agreements[0].element(by.tagName('input'));
-          agree.click();
-        });
+        .then(agreements => agreements.forEach(a => {
+          a.$('.md-container').click();
+        }));
       agreement.confirmButton().isEnabled().should.eventually.be.true;
       agreement.confirmButton().click();
       $('h3').getText().should.eventually.equal('Route A');
@@ -40,11 +39,12 @@ describe('bedrock-angular-agreement', () => {
       element(by.buttonText('Route A')).click();
       bedrock.waitForUrl('/agreementa');
       browser.wait(EC.visibilityOf(agreement.component()), 3000);
+      agreement.component().isDisplayed().should.eventually.be.true;
       element(by.linkText('Terms of Service')).click();
-      var modalTitle = $('h3.modal-title');
+      const modalTitle = $('h2');
       browser.wait(EC.visibilityOf(modalTitle), 3000);
       modalTitle.getText().should.eventually.equal('Service Agreement');
-      var a = element.all(by.tagName('br-modal-body')).last();
+      const a = element.all(by.tagName('br-modal-body')).last();
       a.$('h3').getText().should.eventually.equal('Agreement A goes here.');
       element(by.buttonText('Close')).click();
     }); // end presets one agreement
@@ -54,29 +54,27 @@ describe('bedrock-angular-agreement', () => {
       browser.wait(EC.visibilityOf(agreement.component()), 3000);
       agreement.confirmButton().isEnabled().should.eventually.be.false;
       element(by.linkText('Terms of Service B-1')).click();
-      var modalTitle = $('h3.modal-title');
+      let modalTitle = $('h2');
       browser.wait(EC.visibilityOf(modalTitle), 3000);
       modalTitle.getText().should.eventually.equal('Service Agreement');
-      var a = element.all(by.tagName('br-modal-body')).last();
+      let a = element.all(by.tagName('br-modal-body')).last();
       a.$('h3').getText().should.eventually.equal('Agreement B-1 goes here.');
       element(by.buttonText('Close')).click();
       element(by.linkText('Terms of Service B-2')).click();
-      var modalTitle = $('h3.modal-title');
+      modalTitle = $('h2');
       browser.wait(EC.visibilityOf(modalTitle), 3000);
       modalTitle.getText().should.eventually.equal('Service Agreement');
-      var a = element.all(by.tagName('br-modal-body')).last();
+      a = element.all(by.tagName('br-modal-body')).last();
       a.$('h3').getText().should.eventually.equal('Agreement B-2 goes here.');
       element(by.buttonText('Close')).click();
       element.all(by.repeater('agreement in $ctrl.displayOrder'))
-        .then(agreements => {
-          agreements.forEach((a, i, array) => {
-            a.element(by.tagName('input')).click();
-            // confirmButton should not be enabled until all are checked
-            if(i < array.length - 1) {
-              agreement.confirmButton().isEnabled().should.eventually.be.false;
-            }
-          });
-        });
+        .then(agreements => agreements.forEach((a, i, array) => {
+          a.$('.md-container').click();
+          // confirmButton should not be enabled until all are checked
+          if(i < array.length - 1) {
+            agreement.confirmButton().isEnabled().should.eventually.be.false;
+          }
+        }));
       agreement.confirmButton().isEnabled().should.eventually.be.true;
       agreement.confirmButton().click();
       $('h3').getText().should.eventually.equal('Route B');
@@ -85,9 +83,17 @@ describe('bedrock-angular-agreement', () => {
       element(by.buttonText('Route A')).click();
       bedrock.waitForUrl('/agreementa');
       browser.wait(EC.visibilityOf(agreement.component()), 3000);
-      $('a.stackable-cancel').click();
+      $('button.stackable-cancel').click();
       bedrock.waitForUrl('/didnotagree');
       $('h3').getText().should.eventually.equal('Did Not Agree');
+    });
+    it('shows agreements with a header', () => {
+      element(by.buttonText('Route C')).click();
+      bedrock.waitForUrl('/agreementc');
+      browser.wait(EC.visibilityOf(agreement.component()), 3000);
+      const header = $('legend');
+      browser.wait(EC.visibilityOf(header), 3000);
+      header.getText().should.eventually.equal('Service Agreement');
     });
   });
 });
