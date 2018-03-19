@@ -5,9 +5,9 @@
   "browser": "index.js",
   "dependencies": {
     "bedrock-angular": "^4.0.0",
-    "bedrock-angular-alert": "digitalbazaar/bedrock-angular-alert#material",
+    "bedrock-angular-alert": "^4.0.0",
     "bedrock-angular-material": "^1.0.0",
-    "bedrock-angular-modal": "digitalbazaar/bedrock-angular-modal#material"
+    "bedrock-angular-modal": "^6.0.0"
   },
   "bedrock": {
     "browserDependencies": "all"
