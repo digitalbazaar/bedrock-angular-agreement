@@ -1,5 +1,12 @@
 # bedrock-angular-agreement ChangeLog
 
+### Changed
+- Use ES6 syntax.
+- Switch to material design.
+
+### Removed
+- Bower support.
+
 ## 2.0.1 - 2017-06-02
 
 ### Fixed
