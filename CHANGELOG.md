@@ -1,5 +1,7 @@
 # bedrock-angular-agreement ChangeLog
 
+## 3.0.0 - 2018-03-19
+
 ### Changed
 - Use ES6 syntax.
 - Switch to material design.
