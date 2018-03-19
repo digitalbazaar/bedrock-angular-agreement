@@ -28,7 +28,7 @@
     "bedrock-identity-http": "^1.0.3",
     "bedrock-key": "^4.0.0",
     "bedrock-mail": "^2.0.3",
-    "bedrock-mongodb": "^3.2.1",
+    "bedrock-mongodb": "^5.1.2",
     "bedrock-passport": "^3.1.7",
     "bedrock-permission": "^2.4.0",
     "bedrock-protractor": "digitalbazaar/bedrock-protractor#systemjs",
