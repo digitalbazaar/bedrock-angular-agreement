@@ -4,7 +4,7 @@
 
 ### Changed
 - Use ES6 syntax.
-- Switch to material design.
+- **BREAKING**: Switch to material design.
 
 ### Removed
 - Bower support.
